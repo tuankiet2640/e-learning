@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Database\Factories\RolesAndPermissions;
 use Illuminate\Database\Seeder;
+use RolesAndPermissionsSeeder;
 
 class DatabaseSeeder extends Seeder
 {
