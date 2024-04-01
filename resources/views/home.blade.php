@@ -81,7 +81,7 @@
                     <div class="row align-items-md-stretch mt-4">
                         <div class="col">
                             <div class="p-3 text-white bg-dark rounded-3">
-                                <h3>Welcome to Unifiedtransform!</h3>
+                                <h3>Welcome to Laravel!</h3>
                                 <p><i class="bi bi-emoji-heart-eyes"></i> Thanks for your love and support.</p>
                             </div>
                         </div>

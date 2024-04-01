@@ -22,7 +22,11 @@ class PromotionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'student_id' => 2,
+            'class_id' => 1,
+            'section_id' => 1,
+            'session_id' => 1,
+            'id_card_number' => '01-04-2024-11-11-11',
         ];
     }
 }

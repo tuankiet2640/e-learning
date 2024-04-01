@@ -22,7 +22,10 @@ class SectionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'section_name' => $this->faker->word,
+            'room_no' => 1,
+            'class_id' => 1,
+            'session_id' => 1,
         ];
     }
 }

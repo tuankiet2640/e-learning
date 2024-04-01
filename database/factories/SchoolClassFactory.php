@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\SchoolClass;
+use App\Models\SchoolSession;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SchoolClassFactory extends Factory
@@ -21,8 +22,10 @@ class SchoolClassFactory extends Factory
      */
     public function definition()
     {
+
         return [
-            //
+            'class_name' => $this->faker->sentence,
+            'session_id' => 1,
         ];
     }
 }

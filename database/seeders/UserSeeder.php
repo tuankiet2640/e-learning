@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Section;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class SectionSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,7 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        Section::factory()->count(1)->create();
+        $studentUser = User::factory()->student()->create();
+        $teacherUser = User::factory()->teacher()->create();
     }
 }

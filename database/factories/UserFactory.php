@@ -30,15 +30,45 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             'gender'        => $this->faker->randomElement(['Male', 'Female']),
-            'nationality'   => 'Bangladeshi',
-            'phone'         => 'Ex: 325 43657 7554',
-            'address'       => '568, Dhaka',
+            'nationality'   => 'World',
+            'phone'         => 'Ex: 123 4567 8999',
+            'address'       => '8888 Street',
             'address2'      => 'Same',
-            'city'          => 'Dhaka',
-            'zip'           => '32545',
+            'city'          => 'Hanoi',
+            'zip'           => '88888',
             'photo'         => null,
             'role'          => 'admin',
         ];
+    }
+
+    /**
+     * Define a state to create a student user.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function student()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email' => 'student@edu.com',
+                'role' => 'student',
+            ];
+        });
+    }
+
+    /**
+     * Define a state to create a teacher user.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function teacher()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email' => 'teacher@edu.com',
+                'role' => 'teacher',
+            ];
+        });
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AssignedTeacher;
 use Illuminate\Database\Seeder;
 
 class AssignedTeacherSeeder extends Seeder
@@ -13,6 +14,6 @@ class AssignedTeacherSeeder extends Seeder
      */
     public function run()
     {
-        //
+        AssignedTeacher::factory()->create();
     }
 }
