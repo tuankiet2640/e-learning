@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\StudentAcademicInfo;
 use Illuminate\Database\Seeder;
 
 class StudentAcademicInfoSeeder extends Seeder
@@ -13,6 +14,6 @@ class StudentAcademicInfoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        StudentAcademicInfo::factory()->create();
     }
 }

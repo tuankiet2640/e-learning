@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $studentUser = User::factory()->student()->create();
-        $teacherUser = User::factory()->teacher()->create();
+        User::factory()->student()->create();
+        User::factory()->teacher()->create();
     }
 }

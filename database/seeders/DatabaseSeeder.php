@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\RolesAndPermissions;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AssignedTeacherSeeder::class,
             PromotionSeeder::class,
+            StudentParentInfoSeeder::class,
+            StudentAcademicInfoSeeder::class,
         ]);
     }
 }

@@ -22,7 +22,8 @@ class StudentAcademicInfoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'board_reg_no' => $this->faker->optional()->numerify('STUDENT#########'),
+            'student_id' => 2,
         ];
     }
 }

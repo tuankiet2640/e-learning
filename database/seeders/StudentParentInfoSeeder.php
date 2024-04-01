@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\StudentParentInfo;
 use Illuminate\Database\Seeder;
 
 class StudentParentInfoSeeder extends Seeder
@@ -13,6 +14,6 @@ class StudentParentInfoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        StudentParentInfo::factory()->create();
     }
 }
