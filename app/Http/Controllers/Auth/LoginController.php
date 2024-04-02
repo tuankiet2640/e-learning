@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Interfaces\UserInterface;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -38,6 +40,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->userRepository = app(UserInterface::class);
     }
 
     public function login(Request $request)
@@ -48,12 +51,12 @@ class LoginController extends Controller
         ]);
 
         if (!auth()->attempt($credentials)) {
+            Log::info('Authentication attempt failed');
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
         $user = $request->user();
         $token = $this->userRepository->createToken($user, 'Personal Access Token');
-
         return response()->json([
             'user' => $user,
             'access_token' => $token,
