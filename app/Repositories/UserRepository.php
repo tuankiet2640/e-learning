@@ -183,7 +183,7 @@ class UserRepository implements UserInterface {
                 $class_id = $schoolClass->id;
                 $section_id = $section->id;
             }
-            
+
         }
         try {
             $promotionRepository = new PromotionRepository();
@@ -236,4 +236,17 @@ class UserRepository implements UserInterface {
             throw new \Exception('Failed to change password. '.$e->getMessage());
         }
     }
+
+    public function createToken(User $user, $tokenName)
+    {
+        try {
+            $token = $user->createToken($tokenName)->accessToken;
+
+            return $token;
+        } catch (\Exception $e) {
+            throw new \Exception('Failed to create token. '.$e->getMessage());
+        }
+    }
+
+
 }

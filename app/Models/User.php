@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Mark;
 use App\Models\StudentParentInfo;
 use App\Models\StudentAcademicInfo;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -13,7 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasRoles, HasFactory, Notifiable;
+    use HasApiTokens,HasRoles, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.

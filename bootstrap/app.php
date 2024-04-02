@@ -43,6 +43,16 @@ $app->singleton(
 
 /*
 |--------------------------------------------------------------------------
+| Bootstrap Additional Files
+|--------------------------------------------------------------------------
+|
+| If you have additional files that need to be bootstrapped (i.e., loaded
+| every time the application runs), you can require them here.
+|
+*/
+
+/*
+|--------------------------------------------------------------------------
 | Return The Application
 |--------------------------------------------------------------------------
 |
