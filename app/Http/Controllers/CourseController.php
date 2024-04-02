@@ -19,7 +19,7 @@ class CourseController extends Controller
 
     /**
     * Create a new Controller instance
-    * 
+    *
     * @param CourseInterface $schoolCourseRepository
     * @return void
     */
@@ -68,7 +68,7 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function getStudentCourses($student_id) {
         $current_school_session_id = $this->getSchoolCurrentSession();
@@ -80,7 +80,8 @@ class CourseController extends Controller
             'class_info'    => $class_info,
             'courses'       => $courses,
         ];
-        return view('courses.student', $data);
+
+        return response()->json($data, 200);
     }
 
     /**

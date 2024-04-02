@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::post('/oauth/token', [AccessTokenController::class, 'issueToken'])
     ->middleware(['throttle'])
     ->name('passport.token');
 
+// middleware
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/user', [UserController::class, 'show']);
     Route::get('/logout', [LoginController::class, 'logout']);
@@ -34,5 +36,14 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/user/password', [UserController::class, 'updatePassword']);
 
     //Students
+    Route::get('/students/add', [UserController::class, 'createStudent'])->name('student.create.show');
     Route::get('/students/view/list', [UserController::class, 'getStudentList'])->name('student.list.show');
+    Route::get('/students/view/profile/{id}', [UserController::class, 'showStudentProfile'])->name('student.profile.show');
+
+
 });
+
+// Courses
+//    Route::get('courses/teacher/index', [AssignedTeacherController::class, 'getTeacherCourses'])->name('course.teacher.list.show');
+Route::get('courses/student/index/{student_id}', [CourseController::class, 'getStudentCourses'])->name('course.student.list.show');
+//    Route::get('course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');

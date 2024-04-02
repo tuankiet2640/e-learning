@@ -69,8 +69,7 @@ class UserController extends Controller
                 'school_classes'    => $school_classes,
             ];
 
-//            return view('students.list', $data);
-            return response()->json($data);
+            return response()->json($data, 200);
         } catch (\Exception $e) {
             return back()->withError($e->getMessage());
         }

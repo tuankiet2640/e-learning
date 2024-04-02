@@ -101,8 +101,8 @@ use App\Http\Controllers\Auth\UpdatePasswordController;
 //    //Students
 //    Route::get('/students/add', [UserController::class, 'createStudent'])->name('student.create.show');
 //    Route::get('/students/edit/{id}', [UserController::class, 'editStudent'])->name('student.edit.show');
-//    Route::get('/students/view/list', [UserController::class, 'getStudentList'])->name('student.list.show');
-//    Route::get('/students/view/profile/{id}', [UserController::class, 'showStudentProfile'])->name('student.profile.show');
+    Route::get('/students/view/list', [UserController::class, 'getStudentList'])->name('student.list.show');
+    Route::get('/students/view/profile/{id}', [UserController::class, 'showStudentProfile'])->name('student.profile.show');
 //    Route::get('/students/view/attendance/{id}', [AttendanceController::class, 'showStudentAttendance'])->name('student.attendance.show');
 //
 //    // Marks
