@@ -13,6 +13,7 @@ use App\Http\Requests\StudentStoreRequest;
 use App\Http\Requests\TeacherStoreRequest;
 use App\Interfaces\SchoolSessionInterface;
 use App\Repositories\StudentParentInfoRepository;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -74,7 +75,6 @@ class UserController extends Controller
         }
     }
 
-
     public function showStudentProfile($id) {
         $student = $this->userRepository->findStudent($id);
 
@@ -87,7 +87,7 @@ class UserController extends Controller
             'promotion_info'    => $promotion_info,
         ];
 
-        return view('students.profile', $data);
+        return response()->json($data, 200);
     }
 
     public function showTeacherProfile($id) {
@@ -95,9 +95,25 @@ class UserController extends Controller
         $data = [
             'teacher'   => $teacher,
         ];
-        return view('teachers.profile', $data);
+        return response()->json($data, 200);
     }
 
+    public function getUserFromToken(Request $request)
+    {
+        return $request->user();
+    }
+    public function show(Request $request)
+    {
+        $user = $this->getUserFromToken($request);
+        Log::info('User: ', $user->toArray());
+        if ($user->role == 'teacher') {
+            return $this->showTeacherProfile($user->id);
+        } elseif ($user->role == 'student') {
+            return $this->showStudentProfile($user->id);
+        } else {
+            return response()->json(['error' => 'Invalid user role'], 400);
+        }
+    }
 
     public function createStudent() {
         $current_school_session_id = $this->getSchoolCurrentSession();
