@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Passport\Http\Controllers\AccessTokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,17 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login'])->name('login');
 
+
+Route::post('/oauth/token', [AccessTokenController::class, 'issueToken'])
+    ->middleware(['throttle'])
+    ->name('passport.token');
+
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/user', [UserController::class, 'show']);
     Route::get('/logout', [LoginController::class, 'logout']);
     Route::put('/user', [UserController::class, 'update']);
     Route::post('/user/password', [UserController::class, 'updatePassword']);
+
+    //Students
+    Route::get('/students/view/list', [UserController::class, 'getStudentList'])->name('student.list.show');
 });
